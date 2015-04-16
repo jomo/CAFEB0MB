@@ -8,7 +8,7 @@ public class Game extends JFrame {
   public MineField field;
 
   public Game(String s) {
-    super("CAFEB0MB");
+    super(s);
     generateField(10, 10, 2);
     pack();
     setResizable(false);
