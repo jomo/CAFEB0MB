@@ -1,2 +1,4 @@
 language: java
 sudo: true
+notifications:
+  email: false
