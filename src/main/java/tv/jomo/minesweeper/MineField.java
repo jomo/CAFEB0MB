@@ -3,7 +3,6 @@ package tv.jomo.minesweeper;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.GridLayout;
-import tv.jomo.minesweeper.*;
 
 
 public class MineField extends JPanel {

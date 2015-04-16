@@ -1,7 +1,5 @@
 package tv.jomo.minesweeper;
 
-import tv.jomo.minesweeper.*;
-
 
 public class Minesweeper {
   public Game game;

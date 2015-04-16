@@ -1,7 +1,6 @@
 package tv.jomo.minesweeper;
 
 import javax.swing.JFrame;
-import tv.jomo.minesweeper.*;
 
 
 public class Game extends JFrame {
