@@ -7,8 +7,8 @@ import java.awt.Dimension;
 
 
 public class MineCell extends JButton {
-  public Boolean bomb;
-  public Boolean flagged;
+  public Boolean bomb = false;
+  public Boolean flagged = false;
   public int x;
   public int y;
   public int bombs; // neighbour count
@@ -27,7 +27,11 @@ public class MineCell extends JButton {
         if (e.getButton() == MouseEvent.BUTTON3) {
           setText("F");
         } else if (e.getButton() == MouseEvent.BUTTON1) {
-          setText("O_o");
+          if (bomb) {
+            setText("\\o/");
+          } else {
+            setEnabled(false);
+          }
         } else {
           setText("");
         }
