@@ -5,6 +5,6 @@ public class Minesweeper {
   public Game game;
 
   public static void main(String[] args) {
-      Game game = new Game("CAFEB0MB");
+      Game game = Game.getInstance();
     }
 }
