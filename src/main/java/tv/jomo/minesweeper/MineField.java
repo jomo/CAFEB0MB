@@ -18,7 +18,7 @@ public class MineField extends JPanel {
     setLayout(new GridLayout(width, height));
     for (Integer y = 0; y < height; y++) {
       for (Integer x = 0; x < width; x++) {
-        MineCell cell = new MineCell();
+        MineCell cell = new MineCell(x, y);
         cells[x][y] = cell;
         add(cell);
       }
