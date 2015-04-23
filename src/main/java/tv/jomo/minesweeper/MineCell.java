@@ -43,9 +43,7 @@ public class MineCell extends JButton {
   // toggles the `flagged` state and sets the text
   public void toggleFlag() {
     flagged = !flagged;
-    if (flagged) {
-      setText("F");
-    }
+    setText(flagged ? "F" : "");
   }
 
   // called when user clicked on a bomb
