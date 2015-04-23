@@ -23,18 +23,20 @@ public class MineCell extends JButton {
 
   // adds mouse events
   private void setupListener() {
-    addMouseListener(new MouseAdapter(){
-      public void mouseClicked(MouseEvent e){
-        if (e.getButton() == MouseEvent.BUTTON3) {
-          toggleFlag();
-        } else if (e.getButton() == MouseEvent.BUTTON1) {
-          if (bomb) {
-            Game.getInstance().lose();
+    addMouseListener(new MouseAdapter() {
+      public void mouseClicked(MouseEvent e) {
+        if (isEnabled()) {
+          if (e.getButton() == MouseEvent.BUTTON3) {
+            toggleFlag();
+          } else if (e.getButton() == MouseEvent.BUTTON1) {
+            if (bomb) {
+              Game.getInstance().lose();
+            } else {
+              Game.getInstance().field.clearCells(MineCell.this);
+            }
           } else {
-            Game.getInstance().field.clearCells(MineCell.this);
+            setText("");
           }
-        } else {
-          setText("");
         }
       }
     });
@@ -43,6 +45,7 @@ public class MineCell extends JButton {
   // toggles the `flagged` state and sets the text
   public void toggleFlag() {
     flagged = !flagged;
+    Game.getInstance().field.checkWin();
     setText(flagged ? "⚑" : "");
   }
 
@@ -52,7 +55,11 @@ public class MineCell extends JButton {
     if (isEnabled()) {
       setEnabled(false);
       if (bomb) {
-        setText("✶");
+        if (flagged) {
+          setText("✶⚑");
+        } else {
+          setText("✶");
+        }
       } else {
         setText(bombs == 0 ? "" : bombs.toString());
       }

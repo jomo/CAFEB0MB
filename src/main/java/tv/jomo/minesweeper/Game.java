@@ -22,7 +22,8 @@ public class Game extends JFrame {
     setVisible(true);
   }
   public void win() {
-    // TODO
+    field.solve();
+    JOptionPane.showMessageDialog(this, "Well done!", "Win", JOptionPane.PLAIN_MESSAGE);
   }
 
   public void lose() {

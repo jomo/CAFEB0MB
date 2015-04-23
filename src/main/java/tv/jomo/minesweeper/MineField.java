@@ -100,6 +100,18 @@ public class MineField extends JPanel {
     }
   }
 
+  public void checkWin() {
+    for (Integer y = 0; y < height; y++) {
+      for (Integer x = 0; x < width; x++) {
+        MineCell cell = cells[x][y];
+        if (cell.bomb != cell.flagged) {
+          return;
+        }
+      }
+    }
+    Game.getInstance().win();
+  }
+
   // automatically clears cells that have no neighbouring bombs
   public void clearCells(MineCell center) {
     for (Integer xmod = -1; xmod <= 1; xmod++) {
