@@ -20,6 +20,7 @@ public class MineField extends JPanel {
     cells = new MineCell[width][height];
     generateField();
     addBombs();
+    setBombCount();
   }
 
   private void generateField() {
@@ -49,6 +50,34 @@ public class MineField extends JPanel {
     }
   }
 
+  private void setBombCount() {
+    for (int y = 0; y < height; y++) {
+      for (int x = 0; x < width; x++) {
+        MineCell cell = cells[x][y];
+        Integer count = countBombs(cell);
+        cell.bombs = count;
+        cell.setText(count.toString());
+      }
+    }
+  }
+
+  private int countBombs(MineCell cell) {
+    int count = 0;
+    for (int xmod = -1; xmod <= 1; xmod++) {
+      for (int ymod = -1; ymod <= 1; ymod++) {
+        Integer x = cell.x + xmod;
+        Integer y = cell.y + ymod;
+        if (x >= 0 && x < width && y >= 0 && y < height) {
+          MineCell neighbour = cells[x][y];
+          if (neighbour.bomb) {
+            count++;
+          }
+        }
+      }
+    }
+    return count;
+  }
+
   private boolean isSolvable() {
     // TODO: flood fill the field
     // and check if all non-bombs are 'filled'
@@ -65,10 +94,5 @@ public class MineField extends JPanel {
 
   public void clearCells(int x, int y) {
     // TODO: clear neighbouring cells where count == 0
-  }
-
-  public int countBombs() {
-    // TODO: count nearby bombs
-    return 0;
   }
 }
