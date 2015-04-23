@@ -12,6 +12,9 @@ public class MineField extends JPanel {
   private GridLayout grid;
   private MineCell[][] cells;
 
+  // creates a new MineField
+  // width and height define the MineCell count
+  // bombs defines the number of bombs randomly spread across the field
   public MineField(Integer width, Integer height, Integer bombs) {
     super();
     this.bombs = bombs;
@@ -23,6 +26,7 @@ public class MineField extends JPanel {
     setBombCount();
   }
 
+  // adds MineCells in a GridLayout to the field
   private void generateField() {
     do {
       removeAll();
@@ -37,6 +41,7 @@ public class MineField extends JPanel {
     } while (!isSolvable());
   }
 
+  // sets random cells across the field to bombs
   private void addBombs() {
     Integer count = 0;
     while (count < bombs) {
@@ -50,6 +55,7 @@ public class MineField extends JPanel {
     }
   }
 
+  // passes the count of neighbouring bombs to each cell on the field
   private void setBombCount() {
     for (Integer y = 0; y < height; y++) {
       for (Integer x = 0; x < width; x++) {
@@ -59,6 +65,7 @@ public class MineField extends JPanel {
     }
   }
 
+  // counts neighbouring bombs for the cell
   private Integer countBombs(MineCell cell) {
     Integer count = 0;
     for (Integer xmod = -1; xmod <= 1; xmod++) {
@@ -76,20 +83,19 @@ public class MineField extends JPanel {
     return count;
   }
 
+  // returns true if the field can be logically solved
+  // returns false otherwise
   private boolean isSolvable() {
     // TODO: flood fill the field
     // and check if all non-bombs are 'filled'
     return true;
   }
 
-  public MineCell getCell(Integer x, Integer y) {
-    return cells[x][y];
-  }
-
   public void explodeBombs() {
     // TODO: iterate over cells, explode bombs
   }
 
+  // automatically clears cells that have no neighbouring bombs
   public void clearCells(Integer x, Integer y) {
     // TODO: clear neighbouring cells where count == 0
   }

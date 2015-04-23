@@ -21,6 +21,7 @@ public class MineCell extends JButton {
     setupListener();
   }
 
+  // adds mouse events
   private void setupListener() {
     addMouseListener(new MouseAdapter(){
       public void mouseClicked(MouseEvent e){
@@ -39,6 +40,7 @@ public class MineCell extends JButton {
     });
   }
 
+  // toggles the `flagged` state and sets the text
   public void toggleFlag() {
     flagged = !flagged;
     if (flagged) {
@@ -46,11 +48,13 @@ public class MineCell extends JButton {
     }
   }
 
+  // called when user clicked on a bomb
   public void explode() {
     // TODO
     setText("\\o/");
   }
 
+  // shows the number of cells nearby
   public void reveal() {
     // TODO
     setText(bombs.toString());
