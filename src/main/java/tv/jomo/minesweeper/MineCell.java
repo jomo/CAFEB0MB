@@ -9,11 +9,11 @@ import java.awt.Dimension;
 public class MineCell extends JButton {
   public Boolean bomb = false;
   public Boolean flagged = false;
-  public int x;
-  public int y;
+  public Integer x;
+  public Integer y;
   public Integer bombs; // neighbour count
 
-  public MineCell(int x, int y) {
+  public MineCell(Integer x, Integer y) {
     super();
     this.x = x;
     this.y = y;

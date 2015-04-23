@@ -38,7 +38,7 @@ public class MineField extends JPanel {
   }
 
   private void addBombs() {
-    int count = 0;
+    Integer count = 0;
     while (count < bombs) {
       Integer x = (int) (Math.random() * width);
       Integer y = (int) (Math.random() * height);
@@ -51,18 +51,18 @@ public class MineField extends JPanel {
   }
 
   private void setBombCount() {
-    for (int y = 0; y < height; y++) {
-      for (int x = 0; x < width; x++) {
+    for (Integer y = 0; y < height; y++) {
+      for (Integer x = 0; x < width; x++) {
         MineCell cell = cells[x][y];
         cell.bombs = countBombs(cell);
       }
     }
   }
 
-  private int countBombs(MineCell cell) {
-    int count = 0;
-    for (int xmod = -1; xmod <= 1; xmod++) {
-      for (int ymod = -1; ymod <= 1; ymod++) {
+  private Integer countBombs(MineCell cell) {
+    Integer count = 0;
+    for (Integer xmod = -1; xmod <= 1; xmod++) {
+      for (Integer ymod = -1; ymod <= 1; ymod++) {
         Integer x = cell.x + xmod;
         Integer y = cell.y + ymod;
         if (x >= 0 && x < width && y >= 0 && y < height) {
@@ -82,7 +82,7 @@ public class MineField extends JPanel {
     return true;
   }
 
-  public MineCell getCell(int x, int y) {
+  public MineCell getCell(Integer x, Integer y) {
     return cells[x][y];
   }
 
@@ -90,7 +90,7 @@ public class MineField extends JPanel {
     // TODO: iterate over cells, explode bombs
   }
 
-  public void clearCells(int x, int y) {
+  public void clearCells(Integer x, Integer y) {
     // TODO: clear neighbouring cells where count == 0
   }
 }
