@@ -14,6 +14,9 @@ public class MineField extends JPanel {
 
   public MineField(Integer width, Integer height, Integer bombs) {
     super();
+    this.bombs = bombs;
+    this.width = width;
+    this.height = height;
     cells = new MineCell[width][height];
     do {
       setLayout(new GridLayout(width, height));
@@ -25,6 +28,20 @@ public class MineField extends JPanel {
         }
       }
     } while (!isSolvable());
+    addBombs();
+  }
+
+  private void addBombs() {
+    int count = 0;
+    while (count < bombs) {
+      Integer x = (int) (Math.random() * width);
+      Integer y = (int) (Math.random() * height);
+      MineCell bombcell = cells[x][y];
+      if (!bombcell.bomb) {
+        bombcell.bomb = true;
+        count++;
+      }
+    }
   }
 
   private boolean isSolvable() {
