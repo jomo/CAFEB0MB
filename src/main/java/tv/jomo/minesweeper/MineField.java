@@ -54,9 +54,7 @@ public class MineField extends JPanel {
     for (int y = 0; y < height; y++) {
       for (int x = 0; x < width; x++) {
         MineCell cell = cells[x][y];
-        Integer count = countBombs(cell);
-        cell.bombs = count;
-        cell.setText(count.toString());
+        cell.bombs = countBombs(cell);
       }
     }
   }

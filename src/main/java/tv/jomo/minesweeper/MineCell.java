@@ -11,7 +11,7 @@ public class MineCell extends JButton {
   public Boolean flagged = false;
   public int x;
   public int y;
-  public int bombs; // neighbour count
+  public Integer bombs; // neighbour count
 
   public MineCell(int x, int y) {
     super();
@@ -25,12 +25,12 @@ public class MineCell extends JButton {
     addMouseListener(new MouseAdapter(){
       public void mouseClicked(MouseEvent e){
         if (e.getButton() == MouseEvent.BUTTON3) {
-          setText("F");
+          toggleFlag();
         } else if (e.getButton() == MouseEvent.BUTTON1) {
           if (bomb) {
-            setText("\\o/");
+            explode();
           } else {
-            setEnabled(false);
+            reveal();
           }
         } else {
           setText("");
@@ -39,19 +39,21 @@ public class MineCell extends JButton {
     });
   }
 
-  public void setFlag(Boolean state) {
-    flagged = state;
-  }
-
-  public void setBomb(Boolean state) {
-    bomb = state;
+  public void toggleFlag() {
+    flagged = !flagged;
+    if (flagged) {
+      setText("F");
+    }
   }
 
   public void explode() {
     // TODO
+    setText("\\o/");
   }
 
   public void reveal() {
     // TODO
+    setText(bombs.toString());
+    setEnabled(false);
   }
 }
