@@ -15,14 +15,22 @@ public class MineField extends JPanel {
   public MineField(Integer width, Integer height, Integer bombs) {
     super();
     cells = new MineCell[width][height];
-    setLayout(new GridLayout(width, height));
-    for (Integer y = 0; y < height; y++) {
-      for (Integer x = 0; x < width; x++) {
-        MineCell cell = new MineCell(x, y);
-        cells[x][y] = cell;
-        add(cell);
+    do {
+      setLayout(new GridLayout(width, height));
+      for (Integer y = 0; y < height; y++) {
+        for (Integer x = 0; x < width; x++) {
+          MineCell cell = new MineCell(x, y);
+          cells[x][y] = cell;
+          add(cell);
+        }
       }
-    }
+    } while (!isSolvable());
+  }
+
+  private boolean isSolvable() {
+    // TODO: flood fill the field
+    // and check if all non-bombs are 'filled'
+    return true;
   }
 
   public MineCell getCell(int x, int y) {
