@@ -14,17 +14,11 @@ public class Game extends JFrame {
 
   private Game(String s) {
     super(s);
-    generateField(10, 10, 2);
+    add(new MineField(10, 10, 10));
     pack();
     setResizable(false);
     setVisible(true);
   }
-
-  public void generateField(Integer width, Integer height, Integer bombs) {
-    field = new MineField(width, height, bombs);
-    add(field);
-  }
-
   public void win() {
     // TODO
   }

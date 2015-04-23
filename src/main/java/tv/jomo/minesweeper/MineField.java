@@ -18,7 +18,13 @@ public class MineField extends JPanel {
     this.width = width;
     this.height = height;
     cells = new MineCell[width][height];
+    generateField();
+    addBombs();
+  }
+
+  private void generateField() {
     do {
+      removeAll();
       setLayout(new GridLayout(width, height));
       for (Integer y = 0; y < height; y++) {
         for (Integer x = 0; x < width; x++) {
@@ -28,7 +34,6 @@ public class MineField extends JPanel {
         }
       }
     } while (!isSolvable());
-    addBombs();
   }
 
   private void addBombs() {
