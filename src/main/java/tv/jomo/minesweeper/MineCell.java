@@ -54,8 +54,12 @@ public class MineCell extends JButton {
 
   // shows the number of cells nearby
   public void reveal() {
-    // TODO
-    setText(bombs.toString());
-    setEnabled(false);
+    if (isEnabled()) {
+      setEnabled(false);
+      setText(bombs == 0 ? "" : bombs.toString());
+      if (bombs == 0) {
+        Game.getInstance().field.clearCells(this);
+      }
+    }
   }
 }

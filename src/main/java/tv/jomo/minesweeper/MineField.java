@@ -96,7 +96,18 @@ public class MineField extends JPanel {
   }
 
   // automatically clears cells that have no neighbouring bombs
-  public void clearCells(Integer x, Integer y) {
-    // TODO: clear neighbouring cells where count == 0
+  public void clearCells(MineCell center) {
+    for (Integer xmod = -1; xmod <= 1; xmod++) {
+      for (Integer ymod = -1; ymod <= 1; ymod++) {
+        Integer x = center.x + xmod;
+        Integer y = center.y + ymod;
+        if (x >= 0 && x < width && y >= 0 && y < height) {
+          MineCell cell = cells[x][y];
+          if (!cell.bomb) {
+            cell.reveal();
+          }
+        }
+      }
+    }
   }
 }

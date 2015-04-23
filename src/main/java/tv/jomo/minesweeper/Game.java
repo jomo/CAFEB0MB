@@ -14,7 +14,8 @@ public class Game extends JFrame {
 
   private Game(String s) {
     super(s);
-    add(new MineField(10, 10, 10));
+    field = new MineField(10, 10, 10);
+    add(field);
     pack();
     setResizable(false);
     setVisible(true);
