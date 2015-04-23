@@ -1,6 +1,7 @@
 package tv.jomo.minesweeper;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Game extends JFrame {
 
@@ -25,6 +26,7 @@ public class Game extends JFrame {
   }
 
   public void lose() {
-    // TODO
+    field.solve();
+    JOptionPane.showMessageDialog(this, "You suck at this game.", "Lost", JOptionPane.PLAIN_MESSAGE);
   }
 }

@@ -91,8 +91,13 @@ public class MineField extends JPanel {
     return true;
   }
 
-  public void explodeBombs() {
-    // TODO: iterate over cells, explode bombs
+  // reveal all cells
+  public void solve() {
+    for (Integer y = 0; y < height; y++) {
+      for (Integer x = 0; x < width; x++) {
+        cells[x][y].reveal();
+      }
+    }
   }
 
   // automatically clears cells that have no neighbouring bombs
@@ -103,8 +108,11 @@ public class MineField extends JPanel {
         Integer y = center.y + ymod;
         if (x >= 0 && x < width && y >= 0 && y < height) {
           MineCell cell = cells[x][y];
-          if (!cell.bomb) {
+          if (cell.isEnabled() && !cell.bomb) {
             cell.reveal();
+            if (cell.bombs == 0) {
+              clearCells(cell);
+            }
           }
         }
       }

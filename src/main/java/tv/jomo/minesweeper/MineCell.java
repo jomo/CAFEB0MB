@@ -29,9 +29,9 @@ public class MineCell extends JButton {
           toggleFlag();
         } else if (e.getButton() == MouseEvent.BUTTON1) {
           if (bomb) {
-            explode();
+            Game.getInstance().lose();
           } else {
-            reveal();
+            Game.getInstance().field.clearCells(MineCell.this);
           }
         } else {
           setText("");
@@ -43,22 +43,18 @@ public class MineCell extends JButton {
   // toggles the `flagged` state and sets the text
   public void toggleFlag() {
     flagged = !flagged;
-    setText(flagged ? "F" : "");
+    setText(flagged ? "⚑" : "");
   }
 
-  // called when user clicked on a bomb
-  public void explode() {
-    // TODO
-    setText("\\o/");
-  }
-
-  // shows the number of cells nearby
+  // shows the number of bombs nearby
+  // or if the cell itself is a bomb
   public void reveal() {
     if (isEnabled()) {
       setEnabled(false);
-      setText(bombs == 0 ? "" : bombs.toString());
-      if (bombs == 0) {
-        Game.getInstance().field.clearCells(this);
+      if (bomb) {
+        setText("✶");
+      } else {
+        setText(bombs == 0 ? "" : bombs.toString());
       }
     }
   }
