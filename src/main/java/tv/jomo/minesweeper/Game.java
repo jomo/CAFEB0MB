@@ -21,6 +21,7 @@ public class Game extends JFrame {
     setResizable(false);
     setVisible(true);
   }
+
   public void win() {
     field.solve();
     JOptionPane.showMessageDialog(this, "Well done!", "Win", JOptionPane.PLAIN_MESSAGE);

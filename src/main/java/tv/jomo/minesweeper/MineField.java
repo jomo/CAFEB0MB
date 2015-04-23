@@ -28,17 +28,15 @@ public class MineField extends JPanel {
 
   // adds MineCells in a GridLayout to the field
   private void generateField() {
-    do {
-      removeAll();
-      setLayout(new GridLayout(width, height));
-      for (Integer y = 0; y < height; y++) {
-        for (Integer x = 0; x < width; x++) {
-          MineCell cell = new MineCell(x, y);
-          cells[x][y] = cell;
-          add(cell);
-        }
+    removeAll();
+    setLayout(new GridLayout(width, height));
+    for (Integer y = 0; y < height; y++) {
+      for (Integer x = 0; x < width; x++) {
+        MineCell cell = new MineCell(x, y);
+        cells[x][y] = cell;
+        add(cell);
       }
-    } while (!isSolvable());
+    }
   }
 
   // sets random cells across the field to bombs
@@ -83,14 +81,6 @@ public class MineField extends JPanel {
     return count;
   }
 
-  // returns true if the field can be logically solved
-  // returns false otherwise
-  private boolean isSolvable() {
-    // TODO: flood fill the field
-    // and check if all non-bombs are 'filled'
-    return true;
-  }
-
   // reveal all cells
   public void solve() {
     for (Integer y = 0; y < height; y++) {
@@ -100,6 +90,7 @@ public class MineField extends JPanel {
     }
   }
 
+  // check if all flags are correctly set and win the game
   public void checkWin() {
     for (Integer y = 0; y < height; y++) {
       for (Integer x = 0; x < width; x++) {
