@@ -15,20 +15,29 @@ public class Game extends JFrame {
 
   private Game(String s) {
     super(s);
-    field = new MineField(10, 10, 10);
-    add(field);
-    pack();
+    start();
     setResizable(false);
     setVisible(true);
+  }
+
+  private void start() {
+    if (field != null) {
+      remove(field);
+    }
+    field = new MineField(10, 10, 10);
+    add(field);
+    pack(); // auto resize
   }
 
   public void win() {
     field.solve();
     JOptionPane.showMessageDialog(this, "Well done!", "Win", JOptionPane.PLAIN_MESSAGE);
+    start();
   }
 
   public void lose() {
     field.solve();
     JOptionPane.showMessageDialog(this, "You suck at this game.", "Lost", JOptionPane.PLAIN_MESSAGE);
+    start();
   }
 }

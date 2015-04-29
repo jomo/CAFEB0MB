@@ -29,6 +29,7 @@ public class MineCell extends JButton {
           if (e.getButton() == MouseEvent.BUTTON3) {
             toggleFlag();
           } else if (e.getButton() == MouseEvent.BUTTON1) {
+            flagged = false;
             if (bomb) {
               Game.getInstance().lose();
             } else {
@@ -60,7 +61,7 @@ public class MineCell extends JButton {
       setEnabled(false);
       if (bomb) {
         if (flagged) {
-          setText("✶⚑");
+          setText("⚑ ✶");
         } else {
           setText("✶");
         }
