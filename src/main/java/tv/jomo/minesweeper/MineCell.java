@@ -3,7 +3,10 @@ package tv.jomo.minesweeper;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
+import javax.swing.border.StrokeBorder;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.BasicStroke;
 
 
 public class MineCell extends JButton {
@@ -19,6 +22,10 @@ public class MineCell extends JButton {
     this.y = y;
     setPreferredSize(new Dimension(50, 50));
     setupListener();
+    setOpaque(true);
+    setBorder(null);
+    setBackground(Color.LIGHT_GRAY);
+    setBorder(new StrokeBorder(new BasicStroke(), Color.WHITE));
   }
 
   // adds mouse events
@@ -68,6 +75,7 @@ public class MineCell extends JButton {
       } else {
         setText(bombs == 0 ? "" : bombs.toString());
       }
+      setBackground(Color.WHITE);
     }
   }
 }
