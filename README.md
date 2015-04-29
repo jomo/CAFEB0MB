@@ -5,7 +5,7 @@
 A Minesweeper game.
 It's a project for school that has to be written in Java.
 
-![screenshot](https://i.imgur.com/dANktfL.png)
+![screenshot](https://i.imgur.com/TOF2COQ.gif)
 
 ## License
 
