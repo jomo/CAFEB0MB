@@ -15,6 +15,7 @@ public class Game extends JFrame {
 
   private Game(String s) {
     super(s);
+    setDefaultCloseOperation(EXIT_ON_CLOSE);
     start();
     setResizable(false);
     setVisible(true);
