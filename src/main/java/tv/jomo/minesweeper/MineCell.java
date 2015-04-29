@@ -32,7 +32,11 @@ public class MineCell extends JButton {
             if (bomb) {
               Game.getInstance().lose();
             } else {
-              Game.getInstance().field.clearCells(MineCell.this);
+              if (bombs == 0) {
+                Game.getInstance().field.clearCells(MineCell.this);
+              } else {
+                reveal();
+              }
             }
           } else {
             setText("");
