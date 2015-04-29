@@ -37,7 +37,7 @@ public class Game extends JFrame {
 
   public void lose() {
     field.solve();
-    JOptionPane.showMessageDialog(this, "You suck at this game.", "Lost", JOptionPane.PLAIN_MESSAGE);
+    JOptionPane.showMessageDialog(this, "You suck at this game.", "Lose", JOptionPane.PLAIN_MESSAGE);
     start();
   }
 }
