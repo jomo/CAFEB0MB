@@ -58,27 +58,25 @@ public class MineField extends JPanel {
     for (Integer y = 0; y < height; y++) {
       for (Integer x = 0; x < width; x++) {
         MineCell cell = cells[x][y];
-        cell.bombs = countBombs(cell);
+        if (cell.bomb) {
+          countBombs(cell);
+        }
       }
     }
   }
 
-  // counts neighbouring bombs for the cell
-  private Integer countBombs(MineCell cell) {
+  // increments neighbouring cell's bomb count
+  private void countBombs(MineCell bomb) {
     Integer count = 0;
     for (Integer xmod = -1; xmod <= 1; xmod++) {
       for (Integer ymod = -1; ymod <= 1; ymod++) {
-        Integer x = cell.x + xmod;
-        Integer y = cell.y + ymod;
+        Integer x = bomb.x + xmod;
+        Integer y = bomb.y + ymod;
         if (x >= 0 && x < width && y >= 0 && y < height) {
-          MineCell neighbour = cells[x][y];
-          if (neighbour.bomb) {
-            count++;
-          }
+          cells[x][y].bombs++;
         }
       }
     }
-    return count;
   }
 
   // reveal all cells

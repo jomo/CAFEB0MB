@@ -14,7 +14,7 @@ public class MineCell extends JButton {
   public Boolean flagged = false;
   public Integer x;
   public Integer y;
-  public Integer bombs; // neighbour count
+  public Integer bombs = 0; // neighbour count
 
   public MineCell(Integer x, Integer y) {
     super();
