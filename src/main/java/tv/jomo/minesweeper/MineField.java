@@ -109,7 +109,7 @@ public class MineField extends JPanel {
         Integer y = center.y + ymod;
         if (x >= 0 && x < width && y >= 0 && y < height) {
           MineCell cell = cells[x][y];
-          if (cell.isEnabled() && !cell.bomb) {
+          if (cell.isEnabled() && !cell.bomb && !cell.flagged) {
             cell.reveal();
             if (cell.bombs == 0) {
               clearCells(cell);
