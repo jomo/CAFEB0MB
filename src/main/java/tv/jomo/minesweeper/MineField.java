@@ -93,7 +93,7 @@ public class MineField extends JPanel {
     for (Integer y = 0; y < height; y++) {
       for (Integer x = 0; x < width; x++) {
         MineCell cell = cells[x][y];
-        if (cell.bomb != cell.flagged) {
+        if (cell.bomb != cell.flagged || (!cell.flagged && cell.isEnabled())) {
           return;
         }
       }

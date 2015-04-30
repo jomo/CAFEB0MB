@@ -49,6 +49,7 @@ public class MineCell extends JButton {
           } else {
             setText("");
           }
+          Game.getInstance().field.checkWin();
         }
       }
     });
@@ -57,7 +58,6 @@ public class MineCell extends JButton {
   // toggles the `flagged` state and sets the text
   public void toggleFlag() {
     flagged = !flagged;
-    Game.getInstance().field.checkWin();
     setText(flagged ? "⚑" : "");
   }
 
