@@ -29,7 +29,7 @@ public class MineField extends JPanel {
   // adds MineCells in a GridLayout to the field
   private void generateField() {
     removeAll();
-    setLayout(new GridLayout(width, height));
+    setLayout(new GridLayout(height, width));
     for (Integer y = 0; y < height; y++) {
       for (Integer x = 0; x < width; x++) {
         MineCell cell = new MineCell(x, y);
@@ -68,8 +68,8 @@ public class MineField extends JPanel {
   // increments neighbouring cell's bomb count
   private void countBombs(MineCell bomb) {
     Integer count = 0;
-    for (Integer xmod = -1; xmod <= 1; xmod++) {
-      for (Integer ymod = -1; ymod <= 1; ymod++) {
+     for (Integer ymod = -1; ymod <= 1; ymod++) {
+      for (Integer xmod = -1; xmod <= 1; xmod++) {
         Integer x = bomb.x + xmod;
         Integer y = bomb.y + ymod;
         if (x >= 0 && x < width && y >= 0 && y < height) {

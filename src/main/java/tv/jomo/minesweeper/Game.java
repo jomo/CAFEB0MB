@@ -64,7 +64,7 @@ public class Game extends JFrame {
     if (field != null) {
       remove(field);
     }
-    field = new MineField(10, 10, 10);
+    field = new MineField(15, 10, 10);
     add(field);
     pack(); // auto resize
   }
