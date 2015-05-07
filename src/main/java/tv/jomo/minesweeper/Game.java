@@ -13,6 +13,9 @@ public class Game extends JFrame {
   private static Game instance = new Game("CAFEB0MB");
   public String difficulty;
   public MineField field;
+  private Integer width = 10;
+  private Integer height = 10;
+  private Integer bombs = 10;
 
   public static synchronized Game getInstance() {
     return instance;
@@ -41,7 +44,46 @@ public class Game extends JFrame {
     JButton gamePropertyMenu = new JButton("Game Properties");
     gamePropertyMenu.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        JOptionPane.showMessageDialog(Game.this, "TODO", "Game Properties", JOptionPane.PLAIN_MESSAGE);
+        Integer new_width = field.width;
+        Integer new_height = field.height;
+        Integer new_bombs = field.bombs;
+        do {
+          Object result = JOptionPane.showInputDialog(Game.this, "Enter the number of columns:", "Field width", JOptionPane.PLAIN_MESSAGE, null, null, field.width);
+          if (result == null) {
+            return; // Cancelled
+          }
+          try {
+            new_width = Integer.parseInt(result.toString());
+          } catch(Exception ex) {
+            new_width = 0;
+          }
+        } while (new_width < 4 || new_width > 30);
+        do {
+          Object result = JOptionPane.showInputDialog(Game.this, "Enter the number of rows:", "Field height", JOptionPane.PLAIN_MESSAGE, null, null, field.height);
+          if (result == null) {
+            return; // Cancelled
+          }
+          try {
+            new_height = Integer.parseInt(result.toString());
+          } catch(Exception ex) {
+            new_height = 0;
+          }
+        } while (new_height < 4 || new_height > 30);
+        do {
+          Object result = JOptionPane.showInputDialog(Game.this, "Enter the number of bombs in the field:", "Bombs", JOptionPane.PLAIN_MESSAGE, null, null, field.bombs);
+          if (result == null) {
+            return; // Cancelled
+          }
+          try {
+            new_bombs = Integer.parseInt(result.toString());
+          } catch(Exception ex) {
+            new_bombs = 0;
+          }
+        } while (new_bombs < 1 || new_bombs >= new_width * new_height);
+        width = new_width;
+        height = new_height;
+        bombs = new_bombs;
+        start();
       }
     });
     menuBar.add(gamePropertyMenu);
@@ -64,7 +106,7 @@ public class Game extends JFrame {
     if (field != null) {
       remove(field);
     }
-    field = new MineField(10, 10, 10);
+    field = new MineField(width, height, bombs);
     add(field);
     pack(); // auto resize
   }
