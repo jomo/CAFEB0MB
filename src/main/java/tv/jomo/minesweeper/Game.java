@@ -77,7 +77,11 @@ public class Game extends JFrame {
 
   public void lose() {
     field.solve();
-    JOptionPane.showMessageDialog(this, "You suck at this game.", "Lose", JOptionPane.PLAIN_MESSAGE);
-    start();
+    Object[] options = { "New Game", "Retry" };
+    if (JOptionPane.showOptionDialog(null, "You suck at this game.", "Lose", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]) > 0) {
+      field.reset();
+    } else {
+      start();
+    }
   }
 }

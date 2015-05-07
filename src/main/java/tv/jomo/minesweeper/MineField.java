@@ -88,6 +88,15 @@ public class MineField extends JPanel {
     }
   }
 
+  // reset all cells
+  public void reset() {
+    for (Integer y = 0; y < height; y++) {
+      for (Integer x = 0; x < width; x++) {
+        cells[x][y].initStyle();
+      }
+    }
+  }
+
   // check if all flags are correctly set and win the game
   public void checkWin() {
     for (Integer y = 0; y < height; y++) {

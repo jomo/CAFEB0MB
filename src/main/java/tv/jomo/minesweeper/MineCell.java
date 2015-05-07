@@ -22,8 +22,13 @@ public class MineCell extends JButton {
     this.y = y;
     setPreferredSize(new Dimension(50, 50));
     setupListener();
+    initStyle();
+  }
+
+  public void initStyle() {
+    setText("");
+    setEnabled(true);
     setOpaque(true);
-    setBorder(null);
     setBackground(Color.LIGHT_GRAY);
     setBorder(new StrokeBorder(new BasicStroke(), Color.WHITE));
   }
