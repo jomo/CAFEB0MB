@@ -3,7 +3,7 @@ package tv.jomo.minesweeper;
 import javax.swing.Box;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,7 +30,7 @@ public class Game extends JFrame {
   private void addMenu() {
     JMenuBar menuBar = new JMenuBar();
 
-    JMenuItem newGameMenu = new JMenuItem("New Game");
+    JButton newGameMenu = new JButton("New Game");
     newGameMenu.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         start();
@@ -38,7 +38,7 @@ public class Game extends JFrame {
     });
     menuBar.add(newGameMenu);
 
-    JMenuItem gamePropertyMenu = new JMenuItem("Game Properties");
+    JButton gamePropertyMenu = new JButton("Game Properties");
     gamePropertyMenu.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         JOptionPane.showMessageDialog(Game.this, "TODO", "Game Properties", JOptionPane.PLAIN_MESSAGE);
@@ -49,7 +49,7 @@ public class Game extends JFrame {
     // Glue = Spacer (because Java)
     menuBar.add(Box.createHorizontalGlue());
 
-    JMenuItem aboutMenu = new JMenuItem("About");
+    JButton aboutMenu = new JButton("About");
     aboutMenu.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         JOptionPane.showMessageDialog(Game.this, "Created by jomo in 2015\nSource Code: https://github.com/jomo/CAFEB0MB/issues/2", "About CAFEB0MB", JOptionPane.PLAIN_MESSAGE);
