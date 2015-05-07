@@ -52,7 +52,7 @@ public class Game extends JFrame {
     JButton aboutMenu = new JButton("About");
     aboutMenu.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        JOptionPane.showMessageDialog(Game.this, "Created by jomo in 2015\nSource Code: https://github.com/jomo/CAFEB0MB/issues/2", "About CAFEB0MB", JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showMessageDialog(Game.this, "Created by jomo in 2015\nSource Code: https://github.com/jomo/CAFEB0MB", "About CAFEB0MB", JOptionPane.PLAIN_MESSAGE);
       }
     });
     menuBar.add(aboutMenu);
