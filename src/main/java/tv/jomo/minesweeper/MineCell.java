@@ -29,7 +29,7 @@ public class MineCell extends JButton {
     setText("");
     setEnabled(true);
     setOpaque(true);
-    setBackground(Color.LIGHT_GRAY);
+    setBackground(new Color(0x4C, 0x9E, 0xD9));
     setBorder(new StrokeBorder(new BasicStroke(), Color.WHITE));
   }
 
