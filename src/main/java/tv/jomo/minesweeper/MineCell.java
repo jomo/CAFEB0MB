@@ -12,9 +12,11 @@ import java.awt.BasicStroke;
 public class MineCell extends JButton {
   public Boolean bomb = false;
   public Boolean flagged = false;
+  // neighbour count
+  public Integer bombs = 0;
+  // position in the MineField
   public Integer x;
   public Integer y;
-  public Integer bombs = 0; // neighbour count
 
   public MineCell(Integer x, Integer y) {
     super();
@@ -25,11 +27,14 @@ public class MineCell extends JButton {
     initStyle();
   }
 
+  // sets the inital JButton style
   public void initStyle() {
     setText("");
     setEnabled(true);
     setOpaque(true);
     setBackground(new Color(0x4C, 0x9E, 0xD9));
+    setForeground(Color.BLACK);
+    // the border adds some whitespace between each MineCell in the field
     setBorder(new StrokeBorder(new BasicStroke(), Color.WHITE));
   }
 
@@ -38,22 +43,25 @@ public class MineCell extends JButton {
     addMouseListener(new MouseAdapter() {
       public void mouseClicked(MouseEvent e) {
         if (isEnabled()) {
+          // right click
           if (e.getButton() == MouseEvent.BUTTON3) {
             toggleFlag();
+          // left click
           } else if (e.getButton() == MouseEvent.BUTTON1) {
             flagged = false;
             if (bomb) {
+              // clicked on a bomb
               Game.getInstance().lose();
             } else {
               if (bombs == 0) {
-                Game.getInstance().field.clearCells(MineCell.this);
+                // no surrounding bombs
+                Game.getInstance().field.clearCells(MineCell.this); // this = MouseAdapter
               } else {
                 reveal();
               }
             }
-          } else {
-            setText("");
           }
+          // check if game was won
           Game.getInstance().field.checkWin();
         }
       }

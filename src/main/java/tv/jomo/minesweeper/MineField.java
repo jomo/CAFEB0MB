@@ -10,11 +10,12 @@ public class MineField extends JPanel {
   public Integer height;
   public Integer bombs;
   private GridLayout grid;
+  // 2D array storing the MineCells
   private MineCell[][] cells;
 
   // creates a new MineField
-  // width and height define the MineCell count
-  // bombs defines the number of bombs randomly spread across the field
+  // `width` and `height` define the MineCell count
+  // `bombs` defines the number of bombs randomly spread across the field
   public MineField(Integer width, Integer height, Integer bombs) {
     super();
     this.bombs = bombs;
@@ -26,7 +27,7 @@ public class MineField extends JPanel {
     setBombCount();
   }
 
-  // adds MineCells in a GridLayout to the field
+  // removes and adds MineCells in a GridLayout to the field
   private void generateField() {
     removeAll();
     setLayout(new GridLayout(height, width));
@@ -53,7 +54,7 @@ public class MineField extends JPanel {
     }
   }
 
-  // passes the count of neighbouring bombs to each cell on the field
+  // sets the count of neighbouring bombs for each cell on the field
   private void setBombCount() {
     for (Integer y = 0; y < height; y++) {
       for (Integer x = 0; x < width; x++) {

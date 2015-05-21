@@ -10,17 +10,21 @@ import java.awt.event.ActionListener;
 
 public class Game extends JFrame {
 
+  // initalize a new Game instance
   private static Game instance = new Game("CAFEB0MB");
+
   public String difficulty;
   public MineField field;
   private Integer width = 10;
   private Integer height = 10;
   private Integer bombs = 10;
 
+  // allows to access the Game instance from public space
   public static synchronized Game getInstance() {
     return instance;
   }
 
+  // initalizes a new Game
   private Game(String s) {
     super(s);
     addMenu();
@@ -30,6 +34,8 @@ public class Game extends JFrame {
     setVisible(true);
   }
 
+  // adds the Menu bar
+  // this includes the "New Game", "Game Properties", and "About" menus
   private void addMenu() {
     JMenuBar menuBar = new JMenuBar();
 
@@ -41,6 +47,7 @@ public class Game extends JFrame {
     });
     menuBar.add(newGameMenu);
 
+    // Game Properties asks for width, height, and number of bombs
     JButton gamePropertyMenu = new JButton("Game Properties");
     gamePropertyMenu.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
@@ -102,6 +109,7 @@ public class Game extends JFrame {
     setJMenuBar(menuBar);
   }
 
+  // reset the game and start a new one
   private void start() {
     if (field != null) {
       remove(field);
@@ -111,12 +119,14 @@ public class Game extends JFrame {
     pack(); // auto resize
   }
 
+  // solve the game and show the win message
   public void win() {
     field.solve();
     JOptionPane.showMessageDialog(this, "Well done!", "Win", JOptionPane.PLAIN_MESSAGE);
     start();
   }
 
+  // solve the game and show the lose message with "New Game" and "Retry" options
   public void lose() {
     field.solve();
     Object[] options = { "New Game", "Retry" };
