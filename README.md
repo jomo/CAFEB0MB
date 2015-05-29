@@ -7,6 +7,18 @@ It's a project for school that has to be written in Java.
 
 ![showcase gif](showcase.gif)
 
+## Building
+
+Simply run:
+```shell
+gradle build
+```
+
+To start the game:
+```shell
+java -jar build/libs/minesweeper.jar
+```
+
 ## License
 
 [WTFPL](LICENSE)
