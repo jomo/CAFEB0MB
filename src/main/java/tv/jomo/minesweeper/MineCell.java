@@ -8,17 +8,17 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.BasicStroke;
 
-
-public class MineCell extends JButton {
-  public Boolean bomb = false;
-  public Boolean flagged = false;
+@SuppressWarnings("serial")
+class MineCell extends JButton {
+  Boolean bomb = false;
+  Boolean flagged = false;
   // neighbour count
-  public Integer bombs = 0;
+  Integer bombs = 0;
   // position in the MineField
-  public Integer x;
-  public Integer y;
+  Integer x;
+  Integer y;
 
-  public MineCell(Integer x, Integer y) {
+  MineCell(Integer x, Integer y) {
     super();
     this.x = x;
     this.y = y;
@@ -28,7 +28,7 @@ public class MineCell extends JButton {
   }
 
   // sets the inital JButton style
-  public void initStyle() {
+  void initStyle() {
     setText("");
     setEnabled(true);
     setOpaque(true);
@@ -69,14 +69,14 @@ public class MineCell extends JButton {
   }
 
   // toggles the `flagged` state and sets the text
-  public void toggleFlag() {
+  void toggleFlag() {
     flagged = !flagged;
     setText(flagged ? "⚑" : "");
   }
 
   // shows the number of bombs nearby
   // or if the cell itself is a bomb
-  public void reveal() {
+  void reveal() {
     if (isEnabled()) {
       setEnabled(false);
       if (bomb) {

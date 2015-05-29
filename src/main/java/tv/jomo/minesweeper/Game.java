@@ -8,19 +8,18 @@ import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Game extends JFrame {
+@SuppressWarnings("serial")
+class Game extends JFrame {
 
   // initalize a new Game instance
   private static Game instance = new Game("CAFEB0MB");
-
-  public String difficulty;
-  public MineField field;
   private Integer width = 10;
   private Integer height = 10;
   private Integer bombs = 10;
+  MineField field;
 
-  // allows to access the Game instance from public space
-  public static synchronized Game getInstance() {
+  // allows to access the Game instance from space
+  static synchronized Game getInstance() {
     return instance;
   }
 
@@ -120,14 +119,14 @@ public class Game extends JFrame {
   }
 
   // solve the game and show the win message
-  public void win() {
+  void win() {
     field.solve();
     JOptionPane.showMessageDialog(this, "Well done!", "Win", JOptionPane.PLAIN_MESSAGE);
     start();
   }
 
   // solve the game and show the lose message with "New Game" and "Retry" options
-  public void lose() {
+  void lose() {
     field.solve();
     Object[] options = { "New Game", "Retry" };
     if (JOptionPane.showOptionDialog(null, "You suck at this game.", "Lose", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]) > 0) {

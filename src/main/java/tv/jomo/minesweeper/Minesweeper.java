@@ -1,7 +1,7 @@
 package tv.jomo.minesweeper;
 
 
-public class Minesweeper {
+class Minesweeper {
   public static void main(String[] args) {
     Game.getInstance();
   }

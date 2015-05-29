@@ -1,22 +1,20 @@
 package tv.jomo.minesweeper;
 
 import javax.swing.JPanel;
-import javax.swing.JButton;
 import java.awt.GridLayout;
 
-
-public class MineField extends JPanel {
-  public Integer width;
-  public Integer height;
-  public Integer bombs;
-  private GridLayout grid;
+@SuppressWarnings("serial")
+class MineField extends JPanel {
+  Integer width;
+  Integer height;
+  Integer bombs;
   // 2D array storing the MineCells
   private MineCell[][] cells;
 
   // creates a new MineField
   // `width` and `height` define the MineCell count
   // `bombs` defines the number of bombs randomly spread across the field
-  public MineField(Integer width, Integer height, Integer bombs) {
+  MineField(Integer width, Integer height, Integer bombs) {
     super();
     this.bombs = bombs;
     this.width = width;
@@ -81,7 +79,7 @@ public class MineField extends JPanel {
   }
 
   // reveal all cells
-  public void solve() {
+  void solve() {
     for (Integer y = 0; y < height; y++) {
       for (Integer x = 0; x < width; x++) {
         cells[x][y].reveal();
@@ -90,7 +88,7 @@ public class MineField extends JPanel {
   }
 
   // reset all cells
-  public void reset() {
+  void reset() {
     for (Integer y = 0; y < height; y++) {
       for (Integer x = 0; x < width; x++) {
         cells[x][y].initStyle();
@@ -99,7 +97,7 @@ public class MineField extends JPanel {
   }
 
   // check if all flags are correctly set and win the game
-  public void checkWin() {
+  void checkWin() {
     for (Integer y = 0; y < height; y++) {
       for (Integer x = 0; x < width; x++) {
         MineCell cell = cells[x][y];
@@ -112,7 +110,7 @@ public class MineField extends JPanel {
   }
 
   // automatically clears cells that have no neighbouring bombs
-  public void clearCells(MineCell center) {
+  void clearCells(MineCell center) {
     for (Integer xmod = -1; xmod <= 1; xmod++) {
       for (Integer ymod = -1; ymod <= 1; ymod++) {
         Integer x = center.x + xmod;
